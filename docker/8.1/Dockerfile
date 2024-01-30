@@ -33,9 +33,11 @@ RUN mkdir -p /home/$user/.composer && \
 # Install redis
 RUN pecl install -o -f redis \
     &&  pecl install grpc \
+    &&  pecl install protobuf \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis \
-    && docker-php-ext-enable grpc
+    &&  docker-php-ext-enable grpc \
+    &&  docker-php-ext-enable protobuf
 
 # Set working directory
 WORKDIR /var/www
